@@ -1,0 +1,23 @@
+{
+  "name": "food-cart",
+  "version": "1.0.0",
+  "description": "This is food ordering app",
+  "repository": {
+    "type": "git",
+    "url": "food-cart-app"
+  },
+  "license": "ISC",
+  "author": "Prajakta Ghatage",
+  "type": "commonjs",
+  
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.1"
+  },
+  "dependencies": {
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  }
+}
