@@ -40,15 +40,68 @@
 }
 .cardContainer:hover{
     cursor: pointer;
-    border: 1px solid gray;
+    transform: scale(0.95,0.95);
+    transform-origin: center center;
+    transition: 0.1s ease-in;
 }
 
 .cardImg{
     width: 90%;
     height: 150px;
     padding: 10px;
+    border-radius: 16px;
+    overflow: hidden;
+    filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
+    position: relative;
+}
+
+.restoName{
+    margin: 0px;
+    font-family: Gilroy;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.45px;
+    color: rgba(2, 6, 12, 0.92);
+    overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    overflow-wrap: break-word;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .cardDetails{
     padding: 10px;
+}
+
+.starRating{
+    display: grid;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 2px;
+    gap: 2px;
+    grid-auto-flow: column;
+    -webkit-box-pack: start;
+    justify-content: start;
+    font-family: Gilroy;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: -0.4px;
+    color: rgba(2, 6, 12, 0.92);
+}
+
+.cuisine{
+    font-family: Gilroy;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: -0.4px;
+    color: rgba(2, 6, 12, 0.6);
+    overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    overflow-wrap: break-word;
+    -webkit-box-orient: vertical;
 }

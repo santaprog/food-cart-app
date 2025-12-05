@@ -38,11 +38,13 @@ const CardCompo = (props) => {
         }
       />
       <div className="cardDetails">
-        <h3 className="restoName">{name}</h3>
-        <h4>{cuisines.join(", ")}</h4>
-        <h4>{avgRating} Star</h4>
-        <h4>{costForTwo}</h4>
-        <h4>{slaString}</h4>
+        <div className="restoName">
+            
+            {name}</div>
+        <div className="cuisine">{cuisines.join(", ")}</div>
+        <div className="starRating"><span>{avgRating} Star </span>{slaString}</div>
+        <div>{costForTwo}</div>
+        
       </div>
     </div>
   );
