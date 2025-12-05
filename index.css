@@ -1,0 +1,54 @@
+.header{
+    border: 1px solid black;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.nav-item >ul{
+    display: flex;
+    padding: 10px;
+}
+
+.nav-item >ul >li{
+    padding: 10px;
+    list-style-type: none;
+    font-size: 20px;
+}
+.logo{
+    width:100px;
+}
+
+.bodyContainer{
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px 0 0 0;
+}
+
+.search{
+    padding: 10px;
+}
+.restoContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cardContainer{
+    margin: 5px;
+    width: 208px;
+    background-color: #80808017;
+}
+.cardContainer:hover{
+    cursor: pointer;
+    border: 1px solid gray;
+}
+
+.cardImg{
+    width: 90%;
+    height: 150px;
+    padding: 10px;
+}
+
+.cardDetails{
+    padding: 10px;
+}
