@@ -16,3 +16,7 @@ React is faster due to this Virtual DOM.(Cause check difference between object i
 As soon as data layer changes it will be reflect on UI layer this is done by the diff algorithem.
 It keeps data layer and UI layer in sync.
 
+Reconsilation:
+
+The algorithm React uses to diff one tree with another to determine which parts need to be changed.
+

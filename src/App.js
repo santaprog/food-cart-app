@@ -2,17 +2,48 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import About from "./components/About";
+import Cart from "./components/Cart";
+import Error from "./components/Error";
+import MenuCard from "./components/MenuCard";
+import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 
 
 const AppCompo = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet/>
     </div>
   );
 };
 
+const routerCompo = createBrowserRouter([
+  {
+    path:"/",
+    element:<AppCompo/>,
+    children:[
+      {
+        path:"/about",
+        element:<About/>
+      },
+      {
+        path:"/cart",
+        element:<Cart/>
+      },
+      {
+        path:"/",
+        element:<Body/>
+      },
+      {
+        path:"details/:resId",
+        element:<MenuCard/>
+      }
+    ],
+    errorElement:<Error/>
+  },
+
+]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<AppCompo />);
+root.render(<RouterProvider router={routerCompo}/>);
