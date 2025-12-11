@@ -12,9 +12,9 @@ const Header = () => {
       </div>
       <div className="nav-item">
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About Us</Link></li>
-          <li><Link to="/cart">Cart</Link></li>
+          <li><Link to="/" className="linkUrl">Home</Link></li>
+          <li><Link to="/about" className="linkUrl">About Us</Link></li>
+          <li><Link to="/cart" className="linkUrl">Cart</Link></li>
           <button
             className="login-btn"
             onClick={() => {

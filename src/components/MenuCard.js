@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import MenuDetails from "./MenuDetails";
 import { LIST_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
+import Shimmer from "./Shimmer";
 
 const MenuCard = () => {
   const [menuDetails, setMenuData] = useState([]);
@@ -24,9 +25,6 @@ const MenuCard = () => {
       }
 
       const data = await response.json();
-      console.log(
-        data?.data?.cards[2]?.card?.card?.info.name
-      );
       setHotelName(data?.data?.cards[2]?.card?.card?.info.name);
       setMenuData(
         data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
@@ -36,6 +34,8 @@ const MenuCard = () => {
       console.error("Fetch error:", error);
     }
   };
+
+  if (menuDetails.length === 0) return <Shimmer/>
   return (
     <div>
       <div className="hotelName">

@@ -48,6 +48,7 @@ const Body = () => {
         <div className="serach-container">
           <input
             type="text"
+            placeholder="Search for restaurants"
             value={searchText}
             onChange={(e) => {
               setsearchText(e.target.value);
