@@ -55,4 +55,11 @@ LifeCycleDiagram : https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram
 Important Note while Using the useEffect() hook:
 Inside the useEffect also we have return method where we need to clear the interval as we have used inside the useffect callback function.
 
+why we are using the constructor(props) and super(props)?
+In React, when you create a class-based component, you extend the predefined class React.Component and write constructor(props) and super(props) to properly initialize this.props and this.state in the component. This is especially important for dealing with the component’s lifecycle and rendering.
+
+Why async callbacks cannot be used in useEffect?
+This is because the useEffect hook expects its effect function to return either a cleanup function or nothing at all. This is due to the useEffect() hook's callback function's asynchronous execution and lack of blocking. Therefore, we must follow a specific pattern if we want to call an asynchronous function inside the useEffect() hook.
+The special pattern is to create a new function that is declared inside the useEffect() hook and that contains the async function, and then we can call this new function inside the useEffect() hook.
+
 

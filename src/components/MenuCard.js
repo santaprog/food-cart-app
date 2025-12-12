@@ -1,41 +1,20 @@
-import { useState, useEffect } from "react";
 import MenuDetails from "./MenuDetails";
-import { LIST_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const MenuCard = () => {
-  const [menuDetails, setMenuData] = useState([]);
-  const [hotelName,setHotelName]=useState("");
   const {resId} = useParams();
-  useEffect(() => {
-    fetchCardMenu();
-  }, []);
-
+  const resInfo = useRestaurantMenu();
   
-  const fetchCardMenu = async () => {
-    try {
-      //   const restaurantId = "123456";
-      const response = await fetch(
-        "https://namastedev.com/api/v1/listRestaurantMenu/123456"
-      );
+  const menuDetails = 
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+      ?.card?.itemCards || [];
+  
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+  const hotelName = resInfo?.cards[2]?.card?.card?.info.name;
 
-      const data = await response.json();
-      setHotelName(data?.data?.cards[2]?.card?.card?.info.name);
-      setMenuData(
-        data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-          ?.card?.itemCards || []
-      );
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  };
-
-  if (menuDetails.length === 0) return <Shimmer/>
+  if (resInfo === null) return <Shimmer/>
   return (
     <div>
       <div className="hotelName">
