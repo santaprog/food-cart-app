@@ -5,47 +5,37 @@ class UserClass extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
-      count1: 3,
+        data:{}
     };
     // console.log(this.props.name + "Child Constructor")
   }
-  componentDidMount() {
+  async componentDidMount() {
     // console.log("Child ComponentDidMount");
+    const data = await fetch("https://api.github.com/users/santaprog");
+    const jsonData = await data.json();
+
+    console.log(jsonData);
+    this.setState({data:jsonData});
+
+  }
+
+  componentDidUpdate(){
+    console.log("Inside Component Updated")
+  }
+
+  componentWillUnmount(){
+    console.log("Unmount")
   }
   render() {
     // console.log("Child Render");
-    const { name, location } = this.props;
-    const { count, count1 } = this.state;
+    // const { name, location } = this.props;
+    const { name ,location,bio} = this.state.data;
     return (
       <div className="userCard">
         <div>Name : {name}</div>
         <div>Location : {location}</div>
-        <div>Count : {count}</div>
-        {/* Never Update directly the state variable inside the class Component */}
-        <div>
-          <button
-            onClick={() => {
-              this.setState({
-                count: this.state.count + 1,
-              });
-            }}
-          >
-            Incrementer
-          </button>
-        </div>
-        <div>
-          <button
-            onClick={() => {
-              this.setState({
-                count: this.state.count - 1,
-              });
-            }}
-          >
-            Decrementer
-          </button>
-
-        </div>
+        <div>Headline : {bio}</div>
+        
         <Profile name={"Software Developer"}/>
       </div>
     );
