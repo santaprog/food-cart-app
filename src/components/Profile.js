@@ -11,7 +11,7 @@ class Profile extends React.Component{
     render(){
         // console.log("Inside Profile Render");
         return(
-            <div>{this.props.name}</div>
+            <div>Designation: {this.props.name}</div>
         );
     }
 }

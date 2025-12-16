@@ -1,5 +1,5 @@
 // import apiList from "../utils/apiData";
-import CardCompo from "./CardCompo";
+import CardCompo, { CardCompowithDiscount } from "./CardCompo";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -11,6 +11,9 @@ const Body = () => {
   const [listOfRestaurant, setFilteredRestaurant] = useState([]);
   //Make a copy of list of restaurant so after filter the main list not be updated
   const [listOfFilteredRestaurant, setFilteredListRestaurant] = useState([]);
+  console.log("Listof Restaurants", listOfRestaurant);
+
+  const CardWithDiscount = CardCompowithDiscount(CardCompo);
   useEffect(() => {
     fetchData();
   }, []);
@@ -44,9 +47,10 @@ const Body = () => {
   }
   return (
     <div className="bodyContainer">
-      <div className="filter">
-        <div className="serach-container">
+      <div className="flex m-2 p-2 items-center justify-between">
+        <div className="flex">
           <input
+            className="block text-sm font-bold mb-2shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             placeholder="Search for restaurants"
             value={searchText}
@@ -55,7 +59,7 @@ const Body = () => {
             }}
           />
           <button
-            className="search-btn"
+            className="mx-2 bg-gray-400 hover:bg-gray-600 text-black py-2 px-4 rounded hover:cursor-pointer"
             onClick={() => {
               const searchFilteredList = listOfRestaurant.filter((res) =>
                 res?.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -69,7 +73,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="top-btn"
+          className="bg-orange-400 hover:bg-orange-600 text-black  py-2 px-4 rounded hover:cursor-pointer"
           onClick={() => {
             const filteredList = listOfRestaurant.filter(
               (res) => res.info.avgRating > 4.2
@@ -81,7 +85,7 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="restoContainer">
+      <div className="restoContainer flex flex-wrap m-4">
         {/* Card Component */}
         {listOfFilteredRestaurant.map((restaurant) => (
           <Link
@@ -89,7 +93,11 @@ const Body = () => {
             key={restaurant.info.id}
             to={"details/" + restaurant.info.id}
           >
-            <CardCompo apiData={restaurant} />
+            {restaurant.info?.aggregatedDiscountInfoV3 ? (
+              <CardWithDiscount apiData={restaurant}/>
+            ) : (
+              <CardCompo apiData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
