@@ -1,11 +1,10 @@
 import { useState } from "react";
 import MenuDetails from "./MenuDetails";
-const ItemCategory = ({ data }) => {
-  const [showMenu, setShowMenu] = useState(false);
+const ItemCategory = ({ data,showMenu,setShowMenu }) => {
   //   console.log(data);
   const menuDetails = data.card?.card?.itemCards;
   const handleClicked = () => {
-    setShowMenu(!showMenu);
+    setShowMenu();
   };
   return (
     <div className="hotelMenu p-4 bg-white-100 shadow-lg m-4">
@@ -13,7 +12,7 @@ const ItemCategory = ({ data }) => {
         className="text-lg font-bold flex justify-between cursor-pointer"
         onClick={handleClicked}
       >
-        <span>{data.card.card.title}</span>
+        <span>{data.card.card.title} ({data.card.card.itemCards.length})</span>
         {showMenu ? <span>🔼</span> : <span>🔽</span>}
       </div>
       <div className="hotelSubmenu">

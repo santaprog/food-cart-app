@@ -11,7 +11,7 @@ const Body = () => {
   const [listOfRestaurant, setFilteredRestaurant] = useState([]);
   //Make a copy of list of restaurant so after filter the main list not be updated
   const [listOfFilteredRestaurant, setFilteredListRestaurant] = useState([]);
-  console.log("Listof Restaurants", listOfRestaurant);
+  // console.log("Listof Restaurants", listOfRestaurant);
 
   const CardWithDiscount = CardCompowithDiscount(CardCompo);
   useEffect(() => {

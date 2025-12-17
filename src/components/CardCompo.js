@@ -33,7 +33,7 @@ export const CardCompowithDiscount = (CardCompo) => {
     const { aggregatedDiscountInfoV3 } = props?.apiData?.info;
     return (
       <div>
-        <label className={"rounded-md text-xl text-white absolute mt-40 ml-4"}>
+        <label className={"rounded-md text-xl font-bold text-white absolute mt-40 ml-4"}>
           {aggregatedDiscountInfoV3?.discountTag
             ? aggregatedDiscountInfoV3?.discountTag +
               " " +
