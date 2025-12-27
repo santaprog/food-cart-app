@@ -1,7 +1,16 @@
+import { useDispatch } from "react-redux";
 import { IMG_URL } from "../utils/constants";
+import { addItem } from "../utils/CartSlice";
 const MenuDetails = (props) => {
   const { data } = props;
+  // console.log(data);
   const { name, price, description, imageId } = data?.card?.info;
+  const dispatch = useDispatch()
+  const handleClick =(data)=>{
+    dispatch(
+      addItem(data)
+    )
+  }
   return (
     <div className="menuDetails flex p-2 m-2 rounded-2xl border border-gray-400 justify-between">
       <div className="p-2">
@@ -11,6 +20,7 @@ const MenuDetails = (props) => {
       </div>
       <div>
         <img className="menuImg w-20 h-20 rounded-2xl" src={IMG_URL + imageId} />
+        <button className="m-2 bg-blue-100 rounded-xl p-1" onClick={()=>handleClick({data})}>Add +</button>
       </div>
     </div>
   );

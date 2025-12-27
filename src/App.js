@@ -9,6 +9,8 @@ import MenuCard from "./components/MenuCard";
 import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
+import cartStore from "./utils/cartStore";
 
 const AppCompo = () => {
   const [customName,SetCustomName] = useState("");
@@ -16,6 +18,7 @@ const AppCompo = () => {
     SetCustomName("Prajakta Ghatage");
   },[]);
   return (
+    <Provider store={cartStore}>
     <div className="app">
       <UserContext.Provider value={{userName:customName,SetCustomName}}>
         <Header />
@@ -24,6 +27,7 @@ const AppCompo = () => {
         <Outlet />
       </UserContext.Provider>
     </div>
+    </Provider>
   );
 };
 
